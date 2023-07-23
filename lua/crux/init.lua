@@ -1,0 +1,10 @@
+local color = require("lib.color")
+
+local fg = color({ hex = "#1e94d9" })
+print(fg.h)
+print(fg.s)
+print(fg.l)
+print(fg.r)
+print(fg.g)
+print(fg.b)
+print(fg.hex)

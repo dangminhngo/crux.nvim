@@ -1,8 +1,12 @@
 local _helpers = {}
 
-local function round(x, p)
+function _helpers.round(x, p)
   local power = 10 ^ (p or 0)
   return (x * power + 0.5 - (x * power + 0.5) % 1) / power
+end
+
+function _helpers.clamp(val, min, max)
+  return math.min(math.max(val, min), max)
 end
 
 function _helpers.hex_to_rgb(hex)
@@ -102,7 +106,7 @@ function _helpers.hsl_to_rgb(obj)
     end
   end
 
-  return round(rgb.r * 255), round(rgb.g * 255), round(rgb.b * 255)
+  return _helpers.round(rgb.r * 255), _helpers.round(rgb.g * 255), _helpers.round(rgb.b * 255)
 end
 
 function _helpers.contains(obj, value)

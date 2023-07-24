@@ -1,6 +1,16 @@
 local color = require("lib.color")
 
 local fg = color({ hex = "#1e94d9" })
+print("Original")
+print(fg.h)
+print(fg.s)
+print(fg.l)
+print(fg.r)
+print(fg.g)
+print(fg.b)
+print(fg.hex)
+fg.l = fg.l + 0.1
+print("Changed")
 print(fg.h)
 print(fg.s)
 print(fg.l)

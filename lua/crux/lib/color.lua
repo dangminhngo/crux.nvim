@@ -1,4 +1,4 @@
-local helpers = require("lib.helpers")
+local helpers = require("crux.lib.helpers")
 
 --constants for clarity
 local ANY = { "r", "g", "b", "h", "s", "l", "hex" }

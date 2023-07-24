@@ -105,4 +105,14 @@ function _helpers.hsl_to_rgb(obj)
   return round(rgb.r * 255), round(rgb.g * 255), round(rgb.b * 255)
 end
 
+function _helpers.contains(obj, value)
+  for _, v in pairs(obj) do
+    if v == value then
+      return true
+    end
+  end
+
+  return false
+end
+
 return _helpers

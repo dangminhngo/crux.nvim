@@ -2,15 +2,15 @@ local color = require("crux.color")
 
 local builtin = {
   alpha = {
-    fg = "#abc2d0",
-    bg = "#10181d",
+    fg = "#c5d5df",
+    bg = "#0d1418",
     red = "#e46769",
     green = "#a4c76f",
     yellow = "#eace60",
     blue = "#619af5",
     magenta = "#9d78d1",
     cyan = "#42b8e6",
-    teal = "#52dba8",
+    teal = "#5fd7aa",
     orange = "#e39d5f",
     pink = "#d983d7",
   },

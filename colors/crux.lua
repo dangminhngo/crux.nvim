@@ -1,1 +1,1 @@
-require("crux")._load()
+require("crux").load()

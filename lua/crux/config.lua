@@ -1,12 +1,13 @@
-local palette = require("crux.palette")
-
 local _config = {}
 
 local default = {
   palette = "alpha",
   accent = "green",
   transparent = false,
-  terminal_colors = true,
+  term = true,
+  diagnostic = {
+    background = false,
+  },
   styles = {
     attributes = { italic = true },
     booleans = { italic = true },
@@ -19,59 +20,10 @@ local default = {
     types = {},
     variables = {},
   },
-  reverse = {
-    match_paren = false,
-    visual = false,
-    search = false,
+  overrides = {
+    palette = {},
+    groups = {},
   },
-  syntax = {
-    attr = "yellow", -- HTML tag attribues
-    bool = "orange", -- Boolean
-    bracket = "fg2", -- Brackets and Punctuation
-    builtin0 = "red", -- Builtin variable
-    builtin1 = "yellow", -- Builtin type
-    builtin2 = "orange", -- Builtin const
-    builtin3 = "red", -- For keywords: return, constructor
-    comment = "comment", -- Comment
-    conditional = "pink", -- Conditional and loop
-    const = "orange", -- Constants, imports and booleans
-    constructor = "red", -- Constructor, JSX elements
-    dep = "black", -- Deprecated
-    field = "teal", -- Field, Property
-    func = "blue", -- Functions and Titles
-    ident = "pink", -- Identifiers
-    keyword = "magenta", -- Keywords
-    number = "orange", -- Numbers
-    operator = "magenta", -- Operators
-    param = "yellow", -- Params
-    preproc = "magenta", -- PreProc
-    regex = "orange", -- Regex
-    statement = "magenta", -- Statements
-    string = "green", -- Strings
-    delimiter = "teal", -- Tag delimiter
-    type = "yellow", -- Types
-    variable = "fg", -- Variables
-  },
-  diag = {
-    error = "red",
-    warn = "yellow",
-    info = "cyan",
-    hint = "green",
-  },
-  git = {
-    added = "green",
-    removed = "red",
-    changed = "yellow",
-    conflict = "orange",
-    ignored = "pink",
-  },
-  diff = {
-    add = "green",
-    delete = "red",
-    change = "yellow",
-    text = "cyan",
-  },
-  groups = {},
   plugins = {
     alpha = true,
     barbar = true,
@@ -106,7 +58,13 @@ local default = {
 _config.opts = {}
 
 function _config.setup(opts)
-  _config.opts = vim.tbl_deep_extend("force", {}, default, opts or {})
+  _config.opts = vim.tbl_deep_extend("force", default, opts or {})
 end
+
+function _config.extend(opts)
+  _config.opts = vim.tbl_deep_extend("force", _config.opts or default, opts or {})
+end
+
+_config.setup()
 
 return _config

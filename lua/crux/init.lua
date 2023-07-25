@@ -1,20 +1,14 @@
-local color = require("lib.color")
+local config = require("crux.config")
+local theme = require("crux.theme")
 
-local fg = color({ hex = "#1e94d9" })
-print("Original")
-print(fg.h)
-print(fg.s)
-print(fg.l)
-print(fg.r)
-print(fg.g)
-print(fg.b)
-print(fg.hex)
-fg.l = fg.l + 0.1
-print("Changed")
-print(fg.h)
-print(fg.s)
-print(fg.l)
-print(fg.r)
-print(fg.g)
-print(fg.b)
-print(fg.hex)
+local _crux = {}
+
+function _crux.load(opts)
+  opts = opts or {}
+  config.extend(opts)
+  theme.setup()
+end
+
+_crux.setup = config.setup
+
+return _crux

@@ -458,8 +458,8 @@ function _theme.groups(p, opts)
       mini = {
         MiniCompletionActiveParameter = { underline = true },
 
-        MiniCursorword = { bg = p.bg3 },
-        MiniCursorwordCurrent = { bg = p.bg4 },
+        MiniCursorword = { bg = p.bg2 },
+        MiniCursorwordCurrent = { bg = p.bg3 },
 
         MiniIndentscopeSymbol = { fg = p.accent },
         MiniIndentscopePrefix = { nocombine = true }, -- Make it invisible

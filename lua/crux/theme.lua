@@ -1,6 +1,4 @@
 local color = require("crux.color")
-local config = require("crux.config")
-local palette = require("crux.palette")
 
 local _theme = {}
 
@@ -510,8 +508,8 @@ function _theme.groups(p, opts)
       -- https://github.com/nvim-neo-tree/neo-tree.lua
       neo_tree = {
         NeoTreeExpander = { fg = p.black },
-        NeoTreeNormal = { fg = p.fg2, bg = opts.transparent and "NONE" or p.bg0 },
-        NeoTreeNormalNC = { fg = p.fg2, bg = opts.transparent and "NONE" or p.bg0 },
+        NeoTreeNormal = { fg = p.fg2, bg = opts.transparent and p.none or p.bg0 },
+        NeoTreeNormalNC = { fg = p.fg2, bg = opts.transparent and p.none or p.bg0 },
         NeoTreeVertSplit = { link = "VertSplit" },
         NeoTreeIndentMarker = { fg = p.bg4 },
         NeoTreeTitleBar = { fg = p.bg, bg = p.accent },
@@ -548,8 +546,8 @@ function _theme.groups(p, opts)
         CmpItemKindDefault = { fg = p.fg3 },
         CmpItemMenu = { link = "Comment" },
 
-        CmpItemKindVariable = { link = "TSVariable" },
-        CmpItemKindConstant = { link = "TSConstant" },
+        CmpItemKindVariable = { link = "@variable" },
+        CmpItemKindConstant = { link = "Constant" },
         CmpItemKindKeyword = { link = "Keyword" },
         CmpItemKindReference = { link = "Keyword" },
         CmpItemKindValue = { link = "Keyword" },
@@ -562,11 +560,11 @@ function _theme.groups(p, opts)
         CmpItemKindClass = { link = "Type" },
         CmpItemKindStruct = { link = "Type" },
         CmpItemKindEnum = { link = "Type" },
-        CmpItemKindModule = { link = "TSNamespace" },
-        CmpItemKindProperty = { link = "TSProperty" },
-        CmpItemKindField = { link = "TSField" },
-        CmpItemKindTypeParameter = { link = "TSField" },
-        CmpItemKindEnumMember = { link = "TSField" },
+        CmpItemKindModule = { link = "@namespace" },
+        CmpItemKindProperty = { link = "@property" },
+        CmpItemKindField = { link = "@property" },
+        CmpItemKindTypeParameter = { link = "@property" },
+        CmpItemKindEnumMember = { link = "@property" },
         CmpItemKindOperator = { link = "Operator" },
         CmpItemKindSnippet = { fg = p.fg2 },
       },
@@ -623,11 +621,13 @@ function _theme.groups(p, opts)
         NotifyINFOIcon = { link = "NotifyINFOTitle" },
         NotifyDEBUGIcon = { link = "NotifyDEBUGTitle" },
         NotifyTRACEIcon = { link = "NotifyTRACETitle" },
+
+        NotifyBackground = { bg = p.bg0 },
       },
       -----------------------------------------------------------------------------------------------------------------
       -- https://github.com/kyazdani42/nvim-tree.lua
       nvim_tree = {
-        NvimTreeNormal = { fg = p.fg2, bg = opts.transparent and "NONE" or p.bg0 },
+        NvimTreeNormal = { fg = p.fg2, bg = opts.transparent and p.none or p.bg0 },
         NvimTreeVertSplit = { link = "VertSplit" },
         NvimTreeIndentMarker = { fg = p.bg2 },
 
@@ -844,14 +844,13 @@ function _theme.highlight(groups)
   end
 end
 
-function _theme.setup()
+function _theme.setup(p, opts)
   if vim.g.colors_name then
     vim.cmd("hi clear")
   end
-  local pal = palette()
-  local groups = _theme.get_highlight_groups(pal, config.opts)
-  if config.term then
-    _theme.set_terminal_colors(pal)
+  local groups = _theme.get_highlight_groups(p, opts)
+  if opts.term then
+    _theme.set_terminal_colors(p)
   end
   _theme.highlight(groups)
 end

@@ -1,6 +1,7 @@
 local palette = require("crux.palette")
+local opts = require("crux.config").opts
 
-local p = palette()
+local p = palette(opts)
 
 return {
   normal = { fg = p.fg3, bg = p.dark },

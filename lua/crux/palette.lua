@@ -1,23 +1,22 @@
 local color = require("crux.color")
-local opts = require("crux.config").opts
 
 local builtin = {
   alpha = {
     fg = "#abc2d0",
     bg = "#10181d",
-    red = "#f15a5d",
+    red = "#e46769",
     green = "#a4c76f",
     yellow = "#eace60",
     blue = "#619af5",
     magenta = "#9d78d1",
     cyan = "#42b8e6",
-    teal = "#72c2b2",
+    teal = "#52dba8",
     orange = "#e39d5f",
     pink = "#d983d7",
   },
   gamma = {
-    fg = "#dbceb3",
-    bg = "#10181d",
+    fg = "#cfcabe",
+    bg = "#141617",
     red = "#e67e80",
     green = "#a4c76f",
     yellow = "#d1cc66",
@@ -32,7 +31,7 @@ local builtin = {
 
 local default = "alpha"
 
-return function()
+return function(opts)
   local p = builtin[opts.palette or default]
 
   assert(p.fg ~= nil or p.bg ~= nil, "palette fg and bg must be a color string")

@@ -35,6 +35,7 @@ return function(opts)
   local p = builtin[opts.palette or default]
 
   assert(p.fg ~= nil or p.bg ~= nil, "palette fg and bg must be a color string")
+  p.none = "NONE"
   p.accent = p[opts.accent]
 
   p = vim.tbl_deep_extend("keep", p, {

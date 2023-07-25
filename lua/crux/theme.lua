@@ -46,7 +46,7 @@ function _theme.groups(p, opts)
       Pmenu = { fg = p.fg2, bg = p.bg3 }, -- Popup menu: normal item.
       PmenuSel = { fg = p.bg, bg = p.accent }, -- Popup menu: selected item.
       PmenuSbar = { link = "Pmenu" }, -- Popup menu: scrollbar.
-      PmenuThumb = { bg = p.visual }, -- Popup menu: Thumb of the scrollbar.
+      PmenuThumb = { bg = p.accent }, -- Popup menu: Thumb of the scrollbar.
       Question = { link = "MoreMsg" }, -- |hit-enter| prompt and yes/no questions
       QuickFixLine = { link = "CursorLine" }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
       Search = { fg = p.bg2, bg = p.blue }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
@@ -62,7 +62,7 @@ function _theme.groups(p, opts)
       TabLineFill = { bg = p.bg0 }, -- tab pages line, where there are no labels
       TabLineSel = { fg = p.fg0, bg = p.bg }, -- tab pages line, active tab page label
       Title = { fg = p.syntax.func }, -- titles for output from ":set all", ":autocmd" etp.
-      Visual = { fg = p.bg0, bg = p.bg2 }, -- Visual mode selection
+      Visual = { bg = p.bg4 }, -- Visual mode selection
       VisualNOS = { link = "Visual" }, -- Visual mode selection when vim is "Not Owning the Selection".
       WarningMsg = { fg = p.diag.warn }, -- warning messages
       Whitespace = { fg = p.bg2 }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
@@ -428,8 +428,8 @@ function _theme.groups(p, opts)
       -----------------------------------------------------------------------------------------------------------------
       -- https://github.com/ggandor/leap.nvim
       leap = {
-        LeapMatch = { bg = p.search, fg = p.bg, bold = true },
-        LeapLabelPrimary = { fg = p.search, bold = true },
+        LeapMatch = { bg = p.blue, fg = p.bg, bold = true },
+        LeapLabelPrimary = { fg = p.blue, bold = true },
         LeapLabelSecondary = { fg = p.green, bold = true },
         LeapBackdrop = { fg = p.bg4 },
       },
@@ -443,7 +443,7 @@ function _theme.groups(p, opts)
         LspSagaRenameBorder = { fg = p.fg3 },
         LspSagaDefPreviewBorder = { fg = p.fg3 },
         LspSagaCodeActionBorder = { fg = p.fg3 },
-        LspSagaFinderSelection = { fg = p.search },
+        LspSagaFinderSelection = { fg = p.blue },
         LspSagaCodeActionTitle = { link = "Title" },
         LspSagaCodeActionContent = { link = "String" },
         LspSagaSignatureHelpBorder = { fg = p.diag.error },
@@ -464,9 +464,9 @@ function _theme.groups(p, opts)
         MiniIndentscopeSymbol = { fg = p.accent },
         MiniIndentscopePrefix = { nocombine = true }, -- Make it invisible
 
-        MiniJump = { bg = p.search, fg = p.fg },
+        MiniJump = { bg = p.blue, fg = p.fg },
 
-        MiniJump2dSpot = { fg = p.search, bold = true, nocombine = true },
+        MiniJump2dSpot = { fg = p.blue, bold = true, nocombine = true },
 
         MiniStarterCurrent = { nocombine = true },
         MiniStarterFooter = { fg = p.magenta, italic = true },
@@ -478,8 +478,8 @@ function _theme.groups(p, opts)
         MiniStarterSection = { fg = p.blue },
         MiniStarterQuery = { fg = p.teal },
 
-        MiniStatuslineDevinfo = { fg = p.fg3, bg = p.search },
-        MiniStatuslineFileinfo = { fg = p.fg3, bg = p.search },
+        MiniStatuslineDevinfo = { fg = p.fg3, bg = p.blue },
+        MiniStatuslineFileinfo = { fg = p.fg3, bg = p.blue },
         MiniStatuslineFilename = { fg = p.fg3, bg = p.bg4 },
         MiniStatuslineInactive = { fg = p.blue, bg = p.dark },
         MiniStatuslineModeCommand = { fg = p.black, bg = p.yellow, bold = true },
@@ -678,8 +678,8 @@ function _theme.groups(p, opts)
         ScrollbarCursorHandle = { fg = p.accent, bg = p.accent },
         ScrollbarCursor = { fg = p.bg4, bg = p.syntax.bg4 },
 
-        ScrollbarSearchHandle = { fg = p.visual, bg = p.bg },
-        ScrollbarSearch = { fg = p.visual, bg = p.bg },
+        ScrollbarSearchHandle = { fg = p.accent, bg = p.bg },
+        ScrollbarSearch = { fg = p.accent, bg = p.bg },
         ScrollbarErrorHandle = { fg = p.diag.error, bg = p.bg },
         ScrollbarError = { fg = p.diag.error, bg = p.bg },
         ScrollbarWarnHandle = { fg = p.diag.warn, bg = p.bg },
@@ -751,7 +751,7 @@ function _theme.groups(p, opts)
       --https://github.com/justinmk/vim-sneak
       vim_sneak = {
         Sneak = { fg = p.bg, bg = p.accent },
-        SneakScope = { bg = p.visual },
+        SneakScope = { bg = p.accent },
       },
       -----------------------------------------------------------------------------------------------------------------
       -- https://github.com/folke/which-key.nvim

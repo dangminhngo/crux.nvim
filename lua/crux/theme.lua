@@ -167,13 +167,13 @@ function _theme.groups(p, opts)
       DiagnosticSignHint = { link = "DiagnosticHint" },
 
       DiagnosticVirtualTextError = opts.diagnostic.background and { fg = p.bg, bg = p.diag.error }
-        or { fg = p.diag.error, bg = color.pywal_darken(p.diag.error, 0.8) },
+        or { fg = p.diag.error, bg = color.rel_darken(p.diag.error, 0.8) },
       DiagnosticVirtualTextWarn = opts.diagnostic.background and { fg = p.bg, bg = p.diag.warn }
-        or { fg = p.diag.warn, bg = color.pywal_darken(p.diag.warn, 0.8) },
+        or { fg = p.diag.warn, bg = color.rel_darken(p.diag.warn, 0.8) },
       DiagnosticVirtualTextInfo = opts.diagnostic.background and { fg = p.bg, bg = p.diag.info }
-        or { fg = p.diag.info, bg = color.pywal_darken(p.diag.info, 0.8) },
+        or { fg = p.diag.info, bg = color.rel_darken(p.diag.info, 0.8) },
       DiagnosticVirtualTextHint = opts.diagnostic.background and { fg = p.bg, bg = p.diag.hint }
-        or { fg = p.diag.hint, bg = color.pywal_darken(p.diag.hint, 0.8) },
+        or { fg = p.diag.hint, bg = color.rel_darken(p.diag.hint, 0.8) },
 
       DiagnosticUnderlineError = { undercurl = true, sp = p.diag.error },
       DiagnosticUnderlineWarn = { undercurl = true, sp = p.diag.warn },
@@ -341,13 +341,13 @@ function _theme.groups(p, opts)
         BufferVisibleSign = { bg = p.dark, fg = p.diag.info },
         BufferVisibleTarget = { bg = p.dark, fg = p.red },
         BufferInactive = { bg = p.dark, fg = p.bg4 },
-        BufferInactiveERROR = { bg = p.dark, fg = color.pywal_darken(p.diag.error, 0.32) },
-        BufferInactiveHINT = { bg = p.dark, fg = color.pywal_darken(p.diag.hint, 0.32) },
+        BufferInactiveERROR = { bg = p.dark, fg = color.rel_darken(p.diag.error, 0.32) },
+        BufferInactiveHINT = { bg = p.dark, fg = color.rel_darken(p.diag.hint, 0.32) },
         -- BufferInactiveIcon = { bg = p.dark, fg = util.pywal_darken(c., 0.7) },
-        BufferInactiveINFO = { bg = p.dark, fg = color.pywal_darken(p.diag.info, 0.32) },
-        BufferInactiveWARN = { bg = p.dark, fg = color.pywal_darken(p.diag.warn, 0.32) },
+        BufferInactiveINFO = { bg = p.dark, fg = color.rel_darken(p.diag.info, 0.32) },
+        BufferInactiveWARN = { bg = p.dark, fg = color.rel_darken(p.diag.warn, 0.32) },
         BufferInactiveIndex = { bg = p.dark, fg = p.bg4 },
-        BufferInactiveMod = { bg = p.dark, fg = color.pywal_darken(p.diag.warn, 0.32) },
+        BufferInactiveMod = { bg = p.dark, fg = color.rel_darken(p.diag.warn, 0.32) },
         BufferInactiveSign = { bg = p.dark, fg = p.fg3 },
         BufferInactiveTarget = { bg = p.dark, fg = p.red },
         BufferOffset = { bg = p.dark, fg = p.bg4 },
@@ -410,7 +410,7 @@ function _theme.groups(p, opts)
       hop = {
         HopNextKey = { fg = p.teal, bold = true },
         HopNextKey1 = { fg = p.blue, bold = true },
-        HopNextKey2 = { fg = color.pywal_darken(p.blue, 16) },
+        HopNextKey2 = { fg = color.rel_darken(p.blue, 0.16) },
         HopUnmatched = { fg = p.fg3 },
       },
       -----------------------------------------------------------------------------------------------------------------
@@ -495,7 +495,7 @@ function _theme.groups(p, opts)
         MiniTablineFill = { bg = p.black },
         MiniTablineHidden = { fg = p.syntax.comment, bg = p.dark },
         MiniTablineModifiedCurrent = { fg = p.diag.warn, bg = p.bg4 },
-        MiniTablineModifiedHidden = { bg = p.dark, fg = color.pywal_darken(p.diag.warn, 16) },
+        MiniTablineModifiedHidden = { bg = p.dark, fg = color.rel_darken(p.diag.warn, 0.16) },
         MiniTablineModifiedVisible = { fg = p.diag.warn, bg = p.dark },
         MiniTablineTabpagesection = { bg = p.dark, fg = p.none },
         MiniTablineVisible = { fg = p.fg, bg = p.dark },
@@ -848,7 +848,7 @@ function _theme.setup()
   if vim.g.colors_name then
     vim.cmd("hi clear")
   end
-  local pal = palette.generate(config.opts)
+  local pal = palette()
   local groups = _theme.get_highlight_groups(pal, config.opts)
   if config.term then
     _theme.set_terminal_colors(pal)

@@ -24,15 +24,13 @@ end
 
 function _color.rel_lighten(clr, amt)
   clr = color({ hex = clr })
-  amt = (1 - clr.l) * amt
-  clr.l = clr.l + amt * clr.l
+  clr.l = clr.l + (1 - clr.l) * amt
   return clr.hex
 end
 
 function _color.rel_darken(clr, amt)
   clr = color({ hex = clr })
-  amt = clr.l * amt
-  clr.l = clr.l - amt * clr.l
+  clr.l = clr.l - clr.l * amt
   return clr.hex
 end
 

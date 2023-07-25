@@ -1,8 +1,7 @@
 local color = require("crux.color")
+local opts = require("crux.config").opts
 
-local _palette = {}
-
-_palette.builtin = {
+local builtin = {
   alpha = {
     fg = "#abc2d0",
     bg = "#10181d",
@@ -31,31 +30,27 @@ _palette.builtin = {
   },
 }
 
-_palette.default = "alpha"
+local default = "alpha"
 
-function _palette.generate(opts)
-  local p = opts.palette or {}
-
-  if type(p) == "string" and vim.tbl_contains(vim.tbl_keys(_palette.builtin), p) then
-    p = _palette.builtin[p]
-  end
+return function()
+  local p = builtin[opts.palette or default]
 
   assert(p.fg ~= nil or p.bg ~= nil, "palette fg and bg must be a color string")
   p.accent = p[opts.accent]
 
   p = vim.tbl_deep_extend("keep", p, {
-    dark = color.pywal_darken(p.bg, 0.32),
-    bg0 = color.pywal_darken(p.bg, 0.16),
-    bg2 = color.pywal_lighten(p.bg, 0.02),
-    bg3 = color.pywal_lighten(p.bg, 0.06),
-    bg4 = color.pywal_lighten(p.bg, 0.1),
-    fg0 = color.pywal_lighten(p.fg, 0.64),
-    fg2 = color.pywal_darken(p.fg, 0.16),
-    fg3 = color.pywal_darken(p.fg, 0.32),
-    fg4 = color.pywal_darken(p.fg, 0.48),
-    comment = color.pywal_lighten(p.bg, 0.32),
-    black = color.pywal_lighten(p.bg, 0.2),
-    white = color.pywal_lighten(p.fg, 0.64),
+    dark = color.rel_darken(p.bg, 0.32),
+    bg0 = color.rel_darken(p.bg, 0.16),
+    bg2 = color.rel_lighten(p.bg, 0.02),
+    bg3 = color.rel_lighten(p.bg, 0.06),
+    bg4 = color.rel_lighten(p.bg, 0.1),
+    fg0 = color.rel_lighten(p.fg, 0.64),
+    fg2 = color.rel_darken(p.fg, 0.16),
+    fg3 = color.rel_darken(p.fg, 0.32),
+    fg4 = color.rel_darken(p.fg, 0.48),
+    comment = color.rel_lighten(p.bg, 0.32),
+    black = color.rel_lighten(p.bg, 0.2),
+    white = color.rel_lighten(p.fg, 0.64),
   })
 
   p.syntax = {
@@ -109,5 +104,3 @@ function _palette.generate(opts)
 
   return vim.tbl_deep_extend("force", p, opts.overrides.palette)
 end
-
-return _palette

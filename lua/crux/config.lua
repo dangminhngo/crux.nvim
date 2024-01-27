@@ -1,7 +1,7 @@
 local _config = {}
 
 local default = {
-  palette = "alpha",
+  palette = "forest",
   accent = "green",
   transparent = false,
   term = true,
